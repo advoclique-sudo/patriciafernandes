@@ -534,10 +534,17 @@ footer{background:#091524;color:rgba(255,255,255,.72);padding:56px 0 34px;font-s
   var WA_NUMBER = "5531987905019";
   var WA_MSG = "Olá, vim pelo site e gostaria de falar com a Patrícia Fernandes Advocacia.";
   var waHref = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_MSG);
+  // Conversão "Contato" (Google Ads) - dispara no clique do WhatsApp
+  function reportContato(){
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {'send_to': 'AW-18338301466/bZT2CJmUz9McEJqMsahE', 'value': 1.0, 'currency': 'BRL'});
+    }
+  }
   document.querySelectorAll('a.wa-link').forEach(function(el){
     el.setAttribute('href', waHref);
     el.setAttribute('target', '_blank');
     el.setAttribute('rel', 'noopener');
+    el.addEventListener('click', reportContato);
   });
 })();
 </script>
